@@ -3,7 +3,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Navbar from "./components/Navbar";
 import ImageCarousel from "./components/ImageCarousel";
 import centro from "../../public/centro.jpg";
 import ScrollToTopButton from "./components/ScrollToTopButton";

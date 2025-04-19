@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import Link from "next/link";
+
 import { FaInstagram, FaFacebookF, FaWhatsapp, FaTiktok } from "react-icons/fa";
 
 export default function Contacto() {
