@@ -33,7 +33,7 @@ export default function Navbar() {
 
           {/* Info de contacto visible siempre */}
           <div className="text-sm mt-4 md:mt-0 md:text-right">
-            <p>info@centrodentalsuarez.com.bo</p>
+            <p>ventas@centrodentalsuarez.com</p>
             <p>Av. Velarde #325, Santa Cruz de la Sierra, Bolivia 591</p>
           </div>
         </div>
