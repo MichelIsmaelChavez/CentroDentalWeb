@@ -21,7 +21,7 @@ export default function Home() {
         {/* Hero + Carrusel */}
         <motion.section
           id="inicio"
-          className="flex flex-col items-center justify-center text-center px-4 py-2"
+          className="flex flex-col items-center justify-center text-center px-4 py-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
