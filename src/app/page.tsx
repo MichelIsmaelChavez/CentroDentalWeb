@@ -30,7 +30,7 @@ export default function Home() {
           <div className="w-full max-w-5xl">
             <ImageCarousel />
           </div>
-          <motion.h1 className="text-5xl font-extrabold mt-10 text-sky-700 drop-shadow-sm">
+          <motion.h1 className="text-5xl font-extrabold mt-10 text-[#1e3a8a] drop-shadow-sm">
             Bienvenidos al Centro Dental Suárez
           </motion.h1>
           <p className="mt-4 text-lg max-w-2xl mx-auto text-gray-700 leading-relaxed">
@@ -58,7 +58,7 @@ export default function Home() {
   />
 </div>
           <div className="w-full lg:w-1/2 text-left">
-            <h2 className="text-4xl font-bold mb-4 text-[#2563eb]">Nosotros</h2>
+            <h2 className="text-4xl font-bold mb-4 text-[#1e3a8a]">Nosotros</h2>
             <p className="text-[#475569] text-lg leading-relaxed">
               En <span className="font-semibold text-[#3b82f6]">Centro Dental Suárez</span>,
               nos dedicamos a brindar atención odontológica integral de calidad,
@@ -79,7 +79,7 @@ export default function Home() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-3xl font-bold text-center text-[#2563eb] mb-10">
+          <h2 className="text-3xl font-bold text-center text-[#1e3a8a] mb-10">
             Horarios de Atención
           </h2>
           <div className="max-w-3xl mx-auto rounded-xl shadow-lg bg-[#f0f9ff] p-8 border border-[#cbd5e1]">
@@ -108,7 +108,7 @@ export default function Home() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="text-3xl font-bold text-center text-[#2563eb] mb-10">
+          <h2 className="text-3xl font-bold text-center text-[#1e3a8a] mb-10">
             Encuéntranos y Contáctanos
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -178,7 +178,7 @@ export default function Home() {
 
         {/* Scroll Up */}
         <ScrollToTopButton />
-        <footer className="text-center text-sm text-gray-500 mt-10">
+        <footer className="text-center text-[#1e3a8a] text-gray-500 mt-10">
   &copy; 2025 Centro Dental Suarez. All rights reserved
 </footer>
       </main>

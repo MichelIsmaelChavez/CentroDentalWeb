@@ -10,7 +10,7 @@ export default function Contacto() {
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl font-bold text-center text-[#2563eb] mb-12"
+        className="text-4xl font-bold text-center text-[#1e3a8a] mb-12"
       >
         Contáctanos
       </motion.h1>

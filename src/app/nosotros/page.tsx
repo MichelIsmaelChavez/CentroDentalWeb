@@ -12,7 +12,7 @@ export default function Nosotros() {
 
       {/* Título principal */}
       <motion.h1
-        className="text-5xl font-extrabold text-center text-[#2563eb] drop-shadow-xl mb-16 relative z-10"
+        className="text-5xl font-extrabold text-center text-[#1e3a8a] drop-shadow-xl mb-16 relative z-10"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -107,7 +107,7 @@ export default function Nosotros() {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <h2 className="text-2xl font-bold text-[#2563eb] mb-3">{section.title}</h2>
+            <h2 className="text-2xl font-bold text-[#1e3a8a] mb-3">{section.title}</h2>
             <div className="text-gray-600">{section.content}</div>
           </motion.div>
         ))}
