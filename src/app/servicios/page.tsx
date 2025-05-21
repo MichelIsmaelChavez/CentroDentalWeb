@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { FaCheckCircle, FaTooth, FaSmile, FaTeethOpen, FaUserMd, FaXRay } from "react-icons/fa";
+import { Suspense } from "react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -111,7 +112,7 @@ const servicios = [
   },
 ];
 
-export default function Servicios() {
+function ServiciosContent() {
   const searchParams = useSearchParams();
   const servicioId = searchParams.get("id");
 
@@ -186,5 +187,15 @@ export default function Servicios() {
         &copy; 2025 Centro Dental Suárez. Todos los derechos reservados.
       </footer>
     </main>
+  );
+}
+
+export default function Servicios() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#2563eb]"></div>
+    </div>}>
+      <ServiciosContent />
+    </Suspense>
   );
 }
