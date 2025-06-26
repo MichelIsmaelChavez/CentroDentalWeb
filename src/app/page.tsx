@@ -156,6 +156,8 @@ export default function Home() {
           <Image
             src="/profesionales/doc1.jpg"
             alt="Dr. Juan Suárez Castellanos"
+            width={160}
+            height={160}
             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
           />
         </div>
@@ -179,6 +181,8 @@ export default function Home() {
           <Image
             src="/profesionales/doc1.jpg"
             alt="Dr. Juan López"
+            width={160}
+            height={160}
             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
           />
         </div>
@@ -200,6 +204,8 @@ export default function Home() {
           <Image
             src="/profesionales/doc1.jpg"
             alt="Dra. Sofía Rojas"
+            width={160}
+            height={160}
             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
           />
         </div>
@@ -222,6 +228,8 @@ export default function Home() {
           <Image
             src="/profesionales/doc2.jpg"
             alt="Dra. Eliana Pantoja Barranco"
+            width={160}
+            height={160}
             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
           />
         </div>

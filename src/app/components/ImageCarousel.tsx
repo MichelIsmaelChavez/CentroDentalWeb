@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 // Imágenes y video en el carrusel
 const media = [
@@ -15,10 +15,6 @@ const ImageCarousel = () => {
 
   const nextSlide = () => {
     setCurrent((prev) => (prev === media.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrent((prev) => (prev === 0 ? media.length - 1 : prev - 1));
   };
 
   useEffect(() => {
@@ -46,9 +42,11 @@ const ImageCarousel = () => {
               className="w-full h-full object-cover"
             />
           ) : (
-            <img
+            <Image
               src={media[current]}
               alt={`Slide ${current + 1}`}
+              width={1200}
+              height={600}
               className="w-full h-full object-cover"
             />
           )}
