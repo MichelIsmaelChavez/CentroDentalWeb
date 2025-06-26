@@ -9,6 +9,7 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 import { FaInstagram, FaFacebookF, FaWhatsapp, FaTiktok } from "react-icons/fa";
 import Link from "next/link";
 import { FaTooth, FaSmile, FaTeethOpen, FaXRay, FaUserMd } from "react-icons/fa";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -24,7 +25,7 @@ export default function Home() {
         {/* Hero - Carousel pantalla completa */}
 <motion.section
   id="inicio"
-  className="w-full h-[70vh] relative overflow-hidden"
+  className="w-full h-[50vh] relative overflow-hidden"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
@@ -38,15 +39,15 @@ export default function Home() {
 
 <motion.section
   id="bienvenida"
-  className="w-full py-16 px-6 md:px-20 bg-gradient-to-br from-[#4a90e2] to-[#357abd] text-white text-center relative"
+  className="w-full py-16 px-6 md:px-20 bg-white text-white text-center relative"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
   variants={fadeInUp}
 >
   <div className="max-w-4xl mx-auto">
-    <h2 className="text-4xl font-bold mb-6 text-white drop-shadow-lg">Bienvenidos a Centro Dental Suárez</h2>
-    <p className="text-lg md:text-xl font-medium leading-relaxed text-white/90">
+    <h2 className="text-4xl font-bold mb-6 text-[#4a90e2] drop-shadow-lg">Bienvenidos a Centro Dental Suárez</h2>
+    <p className="text-lg md:text-xl font-medium leading-relaxed text-[#475569]">
       Más de 35 años ofreciendo cuidado bucal profesional, humano y con tecnología de vanguardia.
       Nuestra pasión es tu sonrisa.
     </p>
@@ -54,7 +55,7 @@ export default function Home() {
     <div className="mt-10">
       <a
         href="/nosotros"
-        className="inline-block bg-white text-[#4a90e2] font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-[#f0f9ff] transition duration-300 transform hover:scale-105"
+        className="inline-block bg-[#2563eb] via-[#0ea5e9] to-[#38bdf8] text-[##475569] font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-[#4a90e2] transition duration-300 transform hover:scale-105"
       >
         Conócenos
       </a>
@@ -62,34 +63,7 @@ export default function Home() {
   </div>
 </motion.section>
 
-{/* Nosotros */}
-<motion.section
-  id="nosotros"
-  className="flex flex-col lg:flex-row justify-center items-center gap-10 px-6 md:px-20 py-20 max-w-full mx-auto bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={fadeInUp}
->
-  <div className="w-full lg:w-1/2 shadow-2xl rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-500">
-    <Image
-      src={centro}
-      alt="Centro Dental"
-      width={800}
-      height={500}
-      className="object-cover w-full h-auto"
-    />
-  </div>
-  <div className="w-full lg:w-1/2 text-left p-6">
-    <h2 className="text-5xl font-bold mb-10 bg-gradient-to-r from-[#4a90e2] to-[#357abd] text-transparent bg-clip-text">Nosotros</h2>
-    <p className="text-[#334155] text-lg leading-relaxed">
-      En <span className="font-semibold text-[#4a90e2]">Centro Dental Suárez</span>, brindamos atención odontológica integral con profesionalismo, calidez y tecnología moderna.
-    </p>
-    <p className="mt-4 text-[#475569] text-lg leading-relaxed">
-      Nuestro compromiso es cuidar tu salud bucal con los más altos estándares de calidad en cada tratamiento.
-    </p>
-  </div>
-</motion.section>
+
 
 {/* Seccion de servicios */}
 <motion.section
@@ -170,90 +144,130 @@ export default function Home() {
   viewport={{ once: true }}
   variants={fadeInUp}
 >
-  <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#4a90e2] to-[#357abd] text-transparent bg-clip-text">Nuestro Equipo</h2>
+  <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#4a90e2] to-[#357abd] text-transparent bg-clip-text">
+    Nuestro Equipo
+  </h2>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 max-w-7xl mx-auto">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
     {/* Profesional 1 */}
-    <div className="text-center group relative">
-      <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
-        <img
-          src="/profesionales/doc1.jpg"
-          alt="Dra. María Pérez"
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-        />
+    <Link href="/equipo/juansuarez">
+      <div className="text-center group relative">
+        <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
+          <img
+            src="/profesionales/doc1.jpg"
+            alt="Dr. Juan Suárez Castellanos"
+            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+          />
+        </div>
+        <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dr. Juan Suárez Castellanos</h3>
+        <p className="text-[#4a90e2] text-sm font-medium">Odontologo</p>
+        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
+          Cirujano Dentista UMSA La Paz
+          Diplomados en Periodoncia Universidad Ciencias Médicas la Habana - Cuba
+          Diplomado Implantes Universidad Ciencias Médicas la Habana - Cuba
+          Especialidad en Ortodoncia Universidad Ciencias Médicas la Habana - Cuba
+          Maestría en educación Superior U.C.U.
+          Doctorado En ciencias de la salud Humana mención en Odontología UAGRM
+        </div>
       </div>
-      <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dra. María Pérez</h3>
-      <p className="text-[#4a90e2] text-sm font-medium">Odontología General</p>
-      <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
-        Con más de 10 años de experiencia, ofrece atención integral en prevención, diagnósticos y tratamientos dentales para toda la familia.
-      </div>
-    </div>
+    </Link>
 
     {/* Profesional 2 */}
-    <div className="text-center group relative">
-      <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
-        <img
-          src="/profesionales/doc2.jpg"
-          alt="Dr. Juan López"
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-        />
+    <Link href="/equipo/joelsuarez">
+      <div className="text-center group relative">
+        <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
+          <img
+            src="/profesionales/doc1.jpg"
+            alt="Dr. Juan López"
+            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+          />
+        </div>
+        <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dr. Joel Suarez De Los Ríos</h3>
+        <p className="text-[#4a90e2] text-sm font-medium">Odontologo</p>
+        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
+          Licenciado en Odontología Universidad Católica Boliviana San Pablo
+          Especialidad en Ortodoncia Universidad Católica Boliviana San Pablo
+          Especialidad en Educación Superior en Salud Universidad Gabriel Rene Moreno
+          Maestría en Rehabilitación Oral Universidad Católica Boliviana San Pablo
+        </div>
       </div>
-      <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dr. Juan López</h3>
-      <p className="text-[#4a90e2] text-sm font-medium">Ortodoncia</p>
-      <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
-        Especialista en corrección de maloclusiones y tratamientos con brackets tradicionales, estéticos e invisibles.
-      </div>
-    </div>
+    </Link>
 
     {/* Profesional 3 */}
-    <div className="text-center group relative">
-      <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
-        <img
-          src="/profesionales/doc3.jpg"
-          alt="Dra. Sofía Rojas"
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-        />
+    <Link href="/equipo/jonathansuarez">
+      <div className="text-center group relative">
+        <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
+          <img
+            src="/profesionales/doc1.jpg"
+            alt="Dra. Sofía Rojas"
+            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+          />
+        </div>
+        <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dr. Jonathan Suarez De Los Ríos</h3>
+        <p className="text-[#4a90e2] text-sm font-medium">Odontologo</p>
+        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
+          Licenciado en Odontología Universidad Católica Boliviana San Pablo
+          Diplomado en Implantología CEPODO
+          Diplomado en Rehabilitación Oral UNT Perú
+          Diplomado en Educación Superior EMI
+          Especialidad en Ortodoncia Universidad Católica Boliviana San Pablo
+        </div>
       </div>
-      <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dra. Sofía Rojas</h3>
-      <p className="text-[#4a90e2] text-sm font-medium">Estética Dental</p>
-      <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
-        Experta en blanqueamientos, carillas y diseño de sonrisa. Ayuda a los pacientes a lograr una sonrisa estética y natural.
-      </div>
-    </div>
+    </Link>
 
     {/* Profesional 4 */}
-    <div className="text-center group relative">
-      <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
-        <img
-          src="/profesionales/doc4.jpg"
-          alt="Dr. Carlos Gutiérrez"
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-        />
+    <Link href="/equipo/elianapantoja">
+      <div className="text-center group relative">
+        <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
+          <img
+            src="/profesionales/doc2.jpg"
+            alt="Dra. Eliana Pantoja Barranco"
+            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
+          />
+        </div>
+        <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dra. Eliana Pantoja Barranco</h3>
+        <p className="text-[#4a90e2] text-sm font-medium">Odontologo</p>
+        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
+          Licenciada en Odontología Universidad Católica Boliviana San Pablo
+          Diplomado en Odontopediatría CEPODO
+          Diplomado en Educación Superior EMI
+          Especialidad en Endodoncia Universidad Gabriel Rene Moreno
+        </div>
       </div>
-      <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dr. Carlos Gutiérrez</h3>
-      <p className="text-[#4a90e2] text-sm font-medium">Cirugía Oral</p>
-      <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
-        Cirujano dental con enfoque en extracciones complejas, implantes y tratamientos quirúrgicos de encías.
-      </div>
-    </div>
-
-    {/* Profesional 5 */}
-    <div className="text-center group relative">
-      <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
-        <img
-          src="/profesionales/doc5.jpg"
-          alt="Dra. Ana Fernández"
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-        />
-      </div>
-      <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dra. Ana Fernández</h3>
-      <p className="text-[#4a90e2] text-sm font-medium">Rehabilitación Oral</p>
-      <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
-        Se dedica a la restauración funcional y estética de piezas dentales mediante prótesis fijas y removibles.
-      </div>
-    </div>
+    </Link>
   </div>
 </motion.section>
+
+
+{/* Nosotros */}
+<motion.section
+  id="nosotros"
+  className="flex flex-col lg:flex-row justify-center items-center gap-10 px-6 md:px-20 py-20 max-w-full mx-auto bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={fadeInUp}
+>
+  <div className="w-full lg:w-1/2 shadow-2xl rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-500">
+    <Image
+      src={centro}
+      alt="Centro Dental"
+      width={800}
+      height={500}
+      className="object-cover w-full h-auto"
+    />
+  </div>
+  <div className="w-full lg:w-1/2 text-left p-6">
+    <h2 className="text-5xl font-bold mb-10 bg-gradient-to-r from-[#4a90e2] to-[#357abd] text-transparent bg-clip-text">Nosotros</h2>
+    <p className="text-[#334155] text-lg leading-relaxed">
+      En <span className="font-semibold text-[#4a90e2]">Centro Dental Suárez</span>, brindamos atención odontológica integral con profesionalismo, calidez y tecnología moderna.
+    </p>
+    <p className="mt-4 text-[#475569] text-lg leading-relaxed">
+      Nuestro compromiso es cuidar tu salud bucal con los más altos estándares de calidad en cada tratamiento.
+    </p>
+  </div>
+</motion.section>
+
 
 {/* Horarios */}
 <motion.section
@@ -367,9 +381,13 @@ export default function Home() {
     </div>
   </div>
 </motion.section>
+{/* Botón WhatsApp */}
+<WhatsAppButton />
 
 {/* Botón scroll */}
 <ScrollToTopButton />
+
+
 
 <footer className="text-center text-white mt-10 py-4 bg-gradient-to-r from-[#4a90e2] to-[#357abd]">
   &copy; 2025 Centro Dental Suárez. Todos los derechos reservados.

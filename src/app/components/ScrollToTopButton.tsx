@@ -29,7 +29,7 @@ const ScrollToTopButton = () => {
         className="fixed bottom-6 right-6 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300"
         aria-label="Volver arriba"
       >
-        <ArrowUp size={35} />
+        <ArrowUp size={45} />
       </button>
     )
   );

@@ -5,10 +5,10 @@ import centro from "../../../public/centro.jpg";
 
 export default function Nosotros() {
   return (
-    <div className="relative min-h-screen pt-10 bg-gradient-to-b from-[#f8fafc] via-[#ecfdf5] to-[#d1fae5] text-gray-800 px-6 md:px-16 overflow-hidden">
+    <div className="relative min-h-screen pt-10 bg-gradient-to-b from-[#e2e8f0] via-[#93c5fd] to-[#60a5fa] text-gray-800 px-6 md:px-16 overflow-hidden">
       {/* Elemento decorativo borroso */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-[#93c5fd] rounded-full opacity-20 blur-3xl z-0" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#a5f3fc] rounded-full opacity-20 blur-3xl z-0" />
+      <div className="absolute top-0 right-0 w-72 h-72 bg-[#fbbf24] rounded-full opacity-20 blur-3xl z-0" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#34d399] rounded-full opacity-20 blur-3xl z-0" />
 
       {/* Título principal */}
       <motion.h1
@@ -53,7 +53,7 @@ export default function Nosotros() {
 
       {/* Línea decorativa */}
       <motion.div
-        className="w-64 h-1 mx-auto bg-gradient-to-r from-[#2563eb] via-[#0ea5e9] to-[#2563eb] rounded-full mb-12"
+        className="w-64 h-1 mx-auto bg-gradient-to-r from-[#ff6363] via-[#ffbb33] to-[#ff6f91] rounded-full mb-12"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}
@@ -75,30 +75,26 @@ export default function Nosotros() {
           },
         }}
       >
-        {[
-          {
-            title: "Nuestra Misión",
-            content:
-              "Brindar atención dental integral con calidez humana, priorizando la salud, bienestar y satisfacción de nuestros pacientes.",
-          },
-          {
-            title: "Nuestra Visión",
-            content:
-              "Ser reconocidos como el centro odontológico líder en Santa Cruz por nuestra excelencia, innovación y compromiso humano.",
-          },
-          {
-            title: "Nuestros Valores",
-            content: (
-              <ul className="list-disc list-inside text-gray-600 space-y-1">
-                <li>Ética y profesionalismo</li>
-                <li>Responsabilidad</li>
-                <li>Compromiso con la calidad</li>
-                <li>Empatía y trato humano</li>
-                <li>Innovación tecnológica</li>
-              </ul>
-            ),
-          },
-        ].map((section, index) => (
+        {[{
+          title: "Nuestra Misión",
+          content: "Brindar atención dental integral con calidez humana, priorizando la salud, bienestar y satisfacción de nuestros pacientes.",
+        },
+        {
+          title: "Nuestra Visión",
+          content: "Ser reconocidos como el centro odontológico líder en Santa Cruz por nuestra excelencia, innovación y compromiso humano.",
+        },
+        {
+          title: "Nuestros Valores",
+          content: (
+            <ul className="list-disc list-inside text-gray-600 space-y-1">
+              <li>Ética y profesionalismo</li>
+              <li>Responsabilidad</li>
+              <li>Compromiso con la calidad</li>
+              <li>Empatía y trato humano</li>
+              <li>Innovación tecnológica</li>
+            </ul>
+          ),
+        }].map((section, index) => (
           <motion.div
             key={index}
             className="bg-white shadow-lg p-8 rounded-2xl border border-[#bae6fd] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
@@ -126,16 +122,13 @@ export default function Nosotros() {
           </p>
         </div>
       </motion.div>
-      
 
       {/* Espacio al final */}
       <div className="h-32" />
       
       <footer className="text-center text-sm text-gray-500 mt-10">
-  &copy; 2025 Centro Dental Suarez. All rights reserved
-</footer>
+        &copy; 2025 Centro Dental Suarez. All rights reserved
+      </footer>
     </div>
-    
   );
-  
 }

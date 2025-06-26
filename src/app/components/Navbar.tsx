@@ -9,7 +9,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full bg-[#041e47] shadow-lg">
+    <header className="w-full py-7 px-6 md:px-18 bg-gradient-to-br from-[#2563eb] via-[#0ea5e9] to-[#38bdf8] text-white">
 
       <div className="max-w-9xl mx-auto px-17 py-4 text-white">
         {/* Parte superior: Logo + nav + contacto */}
@@ -45,7 +45,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative group px-2"
+                className="relative group px-10"
               >
                 <span className="text-white group-hover:text-cyan-300 transition-colors duration-200">
                   {item.label}
