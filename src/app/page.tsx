@@ -153,7 +153,7 @@ export default function Home() {
     <Link href="/equipo/juansuarez">
       <div className="text-center group relative">
         <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
-          <img
+          <Image
             src="/profesionales/doc1.jpg"
             alt="Dr. Juan Suárez Castellanos"
             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
@@ -176,7 +176,7 @@ export default function Home() {
     <Link href="/equipo/joelsuarez">
       <div className="text-center group relative">
         <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
-          <img
+          <Image
             src="/profesionales/doc1.jpg"
             alt="Dr. Juan López"
             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
@@ -197,7 +197,7 @@ export default function Home() {
     <Link href="/equipo/jonathansuarez">
       <div className="text-center group relative">
         <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
-          <img
+          <Image
             src="/profesionales/doc1.jpg"
             alt="Dra. Sofía Rojas"
             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
@@ -219,7 +219,7 @@ export default function Home() {
     <Link href="/equipo/elianapantoja">
       <div className="text-center group relative">
         <div className="relative overflow-hidden rounded-full w-40 h-40 mx-auto mb-4 shadow-lg ring-4 ring-[#4a90e2]/20">
-          <img
+          <Image
             src="/profesionales/doc2.jpg"
             alt="Dra. Eliana Pantoja Barranco"
             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"

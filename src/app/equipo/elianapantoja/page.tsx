@@ -45,12 +45,12 @@ const Profe1 = () => {
 
       {/* Botón para regresar a la lista de profesionales */}
       <div className="text-center mt-8">
-        <a
+        <Link
           href="/#"
           className="inline-block bg-[#4a90e2] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-[#357abd] transition duration-300"
         >
           Regresar al inicio
-        </a>
+        </Link>
       </div>
     </motion.section>
   );

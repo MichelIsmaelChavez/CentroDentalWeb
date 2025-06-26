@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";  // IMPORTA CORRECTAMENTE motion
 import Image from "next/image";
-import Link from "next/link";
+import Link from "next/link";  // Importa Link de next
 
 const Profe1 = () => {
   return (
@@ -48,12 +48,13 @@ const Profe1 = () => {
 
       {/* Botón para regresar a la lista de profesionales */}
       <div className="text-center mt-8">
-        <a
+        
+        <Link
           href="/#"
           className="inline-block bg-[#4a90e2] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-[#357abd] transition duration-300"
         >
           Regresar al inicio
-        </a>
+        </Link>
       </div>
     </motion.section>
   );
