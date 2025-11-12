@@ -26,10 +26,6 @@ export default function Home() {
 <motion.section
   id="inicio"
   className="w-full h-[50vh] relative overflow-hidden"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={fadeInUp}
 >
   <div className="absolute inset-0">
     <ImageCarousel />
@@ -69,16 +65,13 @@ export default function Home() {
 <motion.section
   id="servicios"
   className="w-full py-20 px-6 md:px-20 bg-gradient-to-br from-[#2563eb] via-[#0ea5e9] to-[#38bdf8] text-white"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={fadeInUp}
+  initial={{ opacity: 0, y: 0 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
 >
   <h2 className="text-4xl font-bold text-center mb-12 text-white drop-shadow-lg">Nuestros Servicios</h2>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    
-
+  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
     {/* Servicio 2 */}
     <Link href="/servicios?id=estetica-dental" className="block">
       <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-center cursor-pointer border border-white/20">
@@ -132,23 +125,19 @@ export default function Home() {
         <p className="text-white/80">Tratamiento de conducto para conservar piezas dentales.</p>
       </div>
     </Link>
-  </div>
+  </div> 
 </motion.section>
 
 {/* Profesionales */}
-<motion.section
+<section
   id="profesionales"
   className="w-full py-20 px-6 md:px-20 bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={fadeInUp}
 >
   <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#4a90e2] to-[#357abd] text-transparent bg-clip-text">
     Nuestro Equipo
   </h2>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
     {/* Profesional 1 */}
     <Link href="/equipo/juansuarez">
       <div className="text-center group relative">
@@ -244,17 +233,14 @@ export default function Home() {
       </div>
     </Link>
   </div>
-</motion.section>
+</section>
+
 
 
 {/* Nosotros */}
-<motion.section
+<section
   id="nosotros"
   className="flex flex-col lg:flex-row justify-center items-center gap-10 px-6 md:px-20 py-20 max-w-full mx-auto bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={fadeInUp}
 >
   <div className="w-full lg:w-1/2 shadow-2xl rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-500">
     <Image
@@ -274,7 +260,7 @@ export default function Home() {
       Nuestro compromiso es cuidar tu salud bucal con los más altos estándares de calidad en cada tratamiento.
     </p>
   </div>
-</motion.section>
+</section>
 
 
 {/* Horarios */}
@@ -319,10 +305,8 @@ export default function Home() {
 {/* Mapa + Contacto */}
 <motion.section
   className="w-full bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] py-16 px-4 md:px-16 text-[#334155]"
-  initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
-  variants={fadeInUp}
 >
   <h2 className="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-[#4a90e2] to-[#357abd] text-transparent bg-clip-text">Encuéntranos y Contáctanos</h2>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
