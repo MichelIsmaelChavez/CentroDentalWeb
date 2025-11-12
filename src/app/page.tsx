@@ -19,7 +19,7 @@ const fadeInUp = {
 export default function Home() {
   return (
     <>
-      <main className="pt-1 min-h-screen bg-gradient-to-b from-white to-[#f0f9ff] text-[#1e293b]">
+      <main className="pt-1 min-h-screen bg-gradient-to-b from-white to-[#f0f9ff] text-[#1e293b] overflow-x-hidden max-w-full w-full">
       <div className="w-full h-1 bg-gradient-to-r from-[#2563eb] via-[#0ea5e9] to-[#38bdf8]"></div>
 
         {/* Hero - Carousel pantalla completa */}
@@ -35,7 +35,7 @@ export default function Home() {
 
 <motion.section
   id="bienvenida"
-  className="w-full py-16 px-6 md:px-20 bg-white text-white text-center relative"
+  className="w-full py-16 px-6 md:px-20 bg-white text-white text-center relative overflow-x-hidden max-w-full"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
@@ -64,7 +64,7 @@ export default function Home() {
 {/* Seccion de servicios */}
 <motion.section
   id="servicios"
-  className="w-full py-20 px-6 md:px-20 bg-gradient-to-br from-[#2563eb] via-[#0ea5e9] to-[#38bdf8] text-white"
+  className="w-full py-20 px-6 md:px-20 bg-gradient-to-br from-[#2563eb] via-[#0ea5e9] to-[#38bdf8] text-white overflow-x-hidden max-w-full"
   initial={{ opacity: 0, y: 0 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.6 }}
@@ -131,7 +131,7 @@ export default function Home() {
 {/* Profesionales */}
 <section
   id="profesionales"
-  className="w-full py-20 px-6 md:px-20 bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]"
+  className="w-full py-20 px-6 md:px-20 bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] overflow-x-hidden max-w-full"
 >
   <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#4a90e2] to-[#357abd] text-transparent bg-clip-text">
     Nuestro Equipo
@@ -152,7 +152,7 @@ export default function Home() {
         </div>
         <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dr. Juan Suárez Castellanos</h3>
         <p className="text-[#4a90e2] text-sm font-medium">Odontologo</p>
-        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
+        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 max-w-[calc(100vw-2rem)] z-10 border border-[#4a90e2]/20">
           Cirujano Dentista UMSA La Paz
           Diplomados en Periodoncia Universidad Ciencias Médicas la Habana - Cuba
           Diplomado Implantes Universidad Ciencias Médicas la Habana - Cuba
@@ -177,7 +177,7 @@ export default function Home() {
         </div>
         <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dr. Joel Suarez De Los Ríos</h3>
         <p className="text-[#4a90e2] text-sm font-medium">Odontologo</p>
-        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
+        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 max-w-[calc(100vw-2rem)] z-10 border border-[#4a90e2]/20">
           Licenciado en Odontología Universidad Católica Boliviana San Pablo
           Especialidad en Ortodoncia Universidad Católica Boliviana San Pablo
           Especialidad en Educación Superior en Salud Universidad Gabriel Rene Moreno
@@ -200,7 +200,7 @@ export default function Home() {
         </div>
         <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dr. Jonathan Suarez De Los Ríos</h3>
         <p className="text-[#4a90e2] text-sm font-medium">Odontologo</p>
-        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
+        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 max-w-[calc(100vw-2rem)] z-10 border border-[#4a90e2]/20">
           Licenciado en Odontología Universidad Católica Boliviana San Pablo
           Diplomado en Implantología CEPODO
           Diplomado en Rehabilitación Oral UNT Perú
@@ -224,7 +224,7 @@ export default function Home() {
         </div>
         <h3 className="text-lg font-semibold cursor-pointer text-[#334155]">Dra. Eliana Pantoja Barranco</h3>
         <p className="text-[#4a90e2] text-sm font-medium">Odontologo</p>
-        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 z-10 border border-[#4a90e2]/20">
+        <div className="absolute left-1/2 -translate-x-1/2 mt-4 bg-white text-sm text-gray-700 p-4 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-64 max-w-[calc(100vw-2rem)] z-10 border border-[#4a90e2]/20">
           Licenciada en Odontología Universidad Católica Boliviana San Pablo
           Diplomado en Odontopediatría CEPODO
           Diplomado en Educación Superior EMI
@@ -240,7 +240,7 @@ export default function Home() {
 {/* Nosotros */}
 <section
   id="nosotros"
-  className="flex flex-col lg:flex-row justify-center items-center gap-10 px-6 md:px-20 py-20 max-w-full mx-auto bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0]"
+  className="flex flex-col lg:flex-row justify-center items-center gap-10 px-6 md:px-20 py-20 max-w-full mx-auto bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] overflow-x-hidden w-full"
 >
   <div className="w-full lg:w-1/2 shadow-2xl rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-500">
     <Image
@@ -265,7 +265,7 @@ export default function Home() {
 
 {/* Horarios */}
 <motion.section
-  className="w-full py-16 px-6 md:px-20 bg-gradient-to-br from-[#2563eb] to-[#0ea5e9] text-white"
+  className="w-full py-16 px-6 md:px-20 bg-gradient-to-br from-[#2563eb] to-[#0ea5e9] text-white overflow-x-hidden max-w-full"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
@@ -304,18 +304,18 @@ export default function Home() {
 
 {/* Mapa + Contacto */}
 <motion.section
-  className="w-full bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] py-16 px-4 md:px-16 text-[#334155]"
+  className="w-full bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#e2e8f0] py-16 px-4 md:px-16 text-[#334155] overflow-x-hidden max-w-full"
   whileInView="visible"
   viewport={{ once: true }}
 >
   <h2 className="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-[#4a90e2] to-[#357abd] text-transparent bg-clip-text">Encuéntranos y Contáctanos</h2>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-    <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-xl ring-4 ring-[#4a90e2]/20">
+    <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-xl ring-4 ring-[#4a90e2]/20 max-w-full">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3798.893655261768!2d-63.181!3d-17.7966944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDQ3JzQ4LjEiUyA2M8KwMTAnNTEuNiJX!5e0!3m2!1ses-419!2sbo!4v1744574033876!5m2!1ses-419!2sbo"
         width="100%"
         height="100%"
-        style={{ border: 0 }}
+        style={{ border: 0, maxWidth: '100%' }}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
@@ -381,7 +381,7 @@ export default function Home() {
 
 
 
-<footer className="text-center text-white mt-10 py-4 bg-gradient-to-r from-[#4a90e2] to-[#357abd]">
+<footer className="text-center text-white mt-10 py-4 bg-gradient-to-r from-[#4a90e2] to-[#357abd] w-full max-w-full overflow-x-hidden">
   &copy; 2025 Centro Dental Suárez. Todos los derechos reservados.
 </footer>
       </main>

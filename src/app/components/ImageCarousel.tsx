@@ -23,7 +23,7 @@ const ImageCarousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative w-full h-full overflow-hidden max-w-full">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -39,7 +39,7 @@ const ImageCarousel = () => {
               autoPlay
               loop
               muted
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover max-w-full"
             />
           ) : (
             <Image
@@ -47,7 +47,7 @@ const ImageCarousel = () => {
               alt={`Slide ${current + 1}`}
               width={1200}
               height={600}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover max-w-full"
             />
           )}
         </motion.div>
