@@ -1,7 +1,11 @@
+// src/app/layout.tsx
+
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar"; // Asegúrate de que esta ruta sea correcta
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,15 +25,16 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="es" className="overflow-x-hidden">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden max-w-full`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-white text-slate-800`}
       >
-        <Navbar /> {/* Navbar visible en todas las páginas */}
-        <main className="overflow-x-hidden max-w-full">{children}</main>
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

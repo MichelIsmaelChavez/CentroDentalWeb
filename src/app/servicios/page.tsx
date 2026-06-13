@@ -1,201 +1,248 @@
-"use client";
+// src/app/servicios/page.tsx
 
+import type { Metadata } from "next";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import { FaCheckCircle, FaTooth, FaSmile, FaTeethOpen, FaUserMd, FaXRay } from "react-icons/fa";
-import { Suspense } from "react";
+import Link from "next/link";
+import {
+  FaSmile,
+  FaTeethOpen,
+  FaXRay,
+  FaUserMd,
+  FaTooth,
+} from "react-icons/fa";
+import type { IconType } from "react-icons";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { services, type ServiceIcon } from "../data/services";
+import { siteConfig } from "../data/site";
+import SectionHeader from "../components/ui/SectionHeader";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+export const metadata: Metadata = {
+  title: "Servicios | Centro Dental Suárez",
+  description:
+    "Conoce los tratamientos odontológicos de Centro Dental Suárez: estética dental, ortodoncia, implantes, periodoncia y endodoncia.",
 };
 
-// Convertimos nombres en slugs para los IDs
-const servicios = [
-  {
-    id: "estetica-dental",
-    nombre: "Estética Dental",
-    descripcion:
-      "Blanqueamiento, carillas de porcelana y diseño de sonrisa. Realzamos la estética de tu sonrisa de forma natural y personalizada.",
-    imagen: "/servicios/estetica.jpg",
-    detalles: [
-      "Blanqueamiento dental profesional con tecnología LED",
-      "Carillas de porcelana ultra finas y resistentes",
-      "Diseño de sonrisa digital personalizado",
-      "Bonding dental para correcciones estéticas menores",
-      "Contorneado gingival para mejorar la simetría"
-    ],
-    beneficios: "Mejora la apariencia de tu sonrisa de forma natural y duradera, aumentando tu confianza y autoestima.",
-    icono: <FaSmile className="text-4xl text-[#2563eb]" />
-  },
-  {
-    id: "ortodoncia",
-    nombre: "Ortodoncia",
-    descripcion:
-      "Tratamientos con brackets tradicionales y estéticos para alinear dientes y mejorar la función masticatoria.",
-    imagen: "/servicios/ortodoncia.jpg",
-    detalles: [
-      "Brackets metálicos de alta calidad",
-      "Brackets estéticos de cerámica",
-      "Brackets autoligables para tratamientos más rápidos",
-      "Arcos de última generación",
-      "Seguimiento digital del progreso"
-    ],
-    beneficios: "Corrige la posición dental, mejora la masticación y previene problemas futuros de salud bucal.",
-    icono: <FaTeethOpen className="text-4xl text-[#2563eb]" />
-  },
-  {
-    id: "ortodoncia-invisible",
-    nombre: "Ortodoncia Invisible (Alineadores)",
-    descripcion:
-      "Alineadores transparentes removibles como Invisalign®, una alternativa estética, cómoda y efectiva para corregir la posición dental.",
-    imagen: "/servicios/aligners.jpg",
-    detalles: [
-      "Alineadores Invisalign® certificados",
-      "Plan de tratamiento 3D personalizado",
-      "Alineadores extraíbles para mayor comodidad",
-      "Cambio de alineadores cada 2 semanas",
-      "Aplicación móvil para seguimiento"
-    ],
-    beneficios: "Tratamiento discreto y cómodo que se adapta a tu estilo de vida, manteniendo la estética durante todo el proceso.",
-    icono: <FaSmile className="text-4xl text-[#2563eb]" />
-  },
-  {
-    id: "implantes-dentales",
-    nombre: "Implantes Dentales",
-    descripcion:
-      "Soluciones permanentes para piezas dentales perdidas. Utilizamos tecnología de vanguardia para rehabilitar tu sonrisa.",
-    imagen: "/servicios/implantes.jpg",
-    detalles: [
-      "Implantes de titanio de alta calidad",
-      "Cirugía guiada por computadora",
-      "Prótesis fijas sobre implantes",
-      "Rehabilitación inmediata",
-      "Garantía extendida en implantes"
-    ],
-    beneficios: "Restaura la función masticatoria y la estética de forma permanente, mejorando la calidad de vida del paciente.",
-    icono: <FaUserMd className="text-4xl text-[#2563eb]" />
-  },
-  {
-    id: "cirugia-periodontal",
-    nombre: "Cirugía Periodontal",
-    descripcion:
-      "Tratamientos quirúrgicos para enfermedades de las encías como gingivitis y periodontitis. Salud y estética en equilibrio.",
-    imagen: "/servicios/periodontal.jpg",
-    detalles: [
-      "Tratamiento de gingivitis avanzada",
-      "Cirugía de encías estética",
-      "Regeneración ósea guiada",
-      "Alargamiento de corona clínica",
-      "Técnicas mínimamente invasivas"
-    ],
-    beneficios: "Previene la pérdida dental y mejora la salud de las encías, fundamentales para una sonrisa saludable.",
-    icono: <FaXRay className="text-4xl text-[#2563eb]" />
-  },
-  {
-    id: "endodoncia",
-    nombre: "Endodoncia",
-    descripcion:
-      "Tratamiento de conductos (canales) para salvar dientes dañados por caries profundas o infecciones. Indoloro y eficaz.",
-    imagen: "/servicios/endodoncia.jpg",
-    detalles: [
-      "Localización digital de conductos",
-      "Instrumentación rotatoria",
-      "Obturación termoplástica",
-      "Radiografía digital",
-      "Anestesia tópica y local"
-    ],
-    beneficios: "Salva dientes que de otra forma tendrían que ser extraídos, manteniendo la estructura dental natural.",
-    icono: <FaTooth className="text-4xl text-[#2563eb]" />
-  },
-];
+const serviceIcons: Record<ServiceIcon, IconType> = {
+  smile: FaSmile,
+  teeth: FaTeethOpen,
+  doctor: FaUserMd,
+  xray: FaXRay,
+  tooth: FaTooth,
+};
 
-function ServiciosContent() {
-  const searchParams = useSearchParams();
-  const servicioId = searchParams.get("id");
-
-  useEffect(() => {
-    if (servicioId) {
-      const element = document.getElementById(servicioId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }, [servicioId]);
-
+export default function ServiciosPage() {
   return (
-    <main className="pt-28 px-6 md:px-20 bg-gradient-to-b from-[#f0f9ff] to-white text-[#0f172a]">
-      <h1 className="text-5xl font-bold text-center text-[#1e40af] mb-16 drop-shadow">
-        Nuestros Servicios
-      </h1>
+    <main className="overflow-hidden bg-white">
+      {/* Hero de página */}
+      <section className="relative overflow-hidden brand-gradient px-4 py-16 text-white sm:px-6 md:px-10 md:py-24">
+        <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
-      <div className="space-y-32">
-        {servicios.map((servicio, index) => (
-          <motion.section
-            id={servicio.id}
-            key={servicio.nombre}
-            className={`flex flex-col ${
-              index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-            } items-center gap-16`}
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
+        <div className="relative mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-cyan-100 sm:text-sm">
+              Servicios odontológicos
+            </p>
+
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+              Tratamientos para cuidar y mejorar tu sonrisa.
+            </h1>
+
+            <p className="mt-5 max-w-2xl text-base leading-8 text-sky-50 sm:text-lg">
+              Conoce nuestras áreas de atención odontológica. Cada tratamiento
+              inicia con una valoración profesional según tu caso.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={siteConfig.contact.whatsappMessage}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-white px-7 py-3 font-bold text-brand shadow-md transition hover:-translate-y-0.5 hover:bg-brand-soft"
+              >
+                Consultar por WhatsApp
+              </a>
+
+              <a
+                href="#lista-servicios"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3 font-bold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20"
+              >
+                Ver servicios
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Índice rápido */}
+      <section className="bg-brand-soft px-4 py-8 sm:px-6 md:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex gap-3 overflow-x-auto pb-2">
+            {services.map((service) => {
+              const Icon = serviceIcons[service.icon];
+
+              return (
+                <a
+                  key={service.id}
+                  href={`#${service.id}`}
+                  className="flex shrink-0 items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-bold text-brand shadow-sm ring-1 ring-brand-soft transition hover:bg-brand-soft-2"
+                >
+                  <Icon className="text-lg" />
+                  {service.shortTitle}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Lista de servicios */}
+      <section
+        id="lista-servicios"
+        className="relative overflow-hidden px-4 py-16 sm:px-6 md:px-10 md:py-24"
+      >
+        <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-brand-soft blur-3xl" />
+        <div className="absolute -right-24 bottom-20 h-80 w-80 rounded-full bg-brand-soft-2 blur-3xl" />
+
+        <div className="relative mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Tratamientos"
+            title="Elige el servicio que necesitas conocer"
+            description="Revisa las opciones disponibles y comunícate con nosotros para recibir orientación personalizada."
+          />
+
+          <div className="space-y-10 md:space-y-14">
+            {services.map((service, index) => {
+              const Icon = serviceIcons[service.icon];
+              const reversed = index % 2 !== 0;
+
+              return (
+                <article
+                  id={service.id}
+                  key={service.id}
+                  className="scroll-mt-28 overflow-hidden rounded-[1.75rem] border border-brand-soft bg-white shadow-xl"
+                >
+                  <div
+                    className={`grid gap-0 lg:grid-cols-2 ${
+                      reversed ? "lg:[&>*:first-child]:order-2" : ""
+                    }`}
+                  >
+                    {/* Imagen */}
+                    <div className="relative min-h-[260px] overflow-hidden bg-brand-soft sm:min-h-[360px] lg:min-h-full">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        width={900}
+                        height={650}
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="h-full w-full object-cover"
+                        priority={index === 0}
+                      />
+
+                      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950/70 to-transparent" />
+
+                      <div className="absolute bottom-5 left-5 right-5">
+                        <span className="inline-flex rounded-full bg-white/15 px-4 py-2 text-sm font-bold text-white backdrop-blur-md ring-1 ring-white/20">
+                          {service.tag ?? "Tratamiento dental"}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Contenido */}
+                    <div className="p-5 sm:p-7 lg:p-10">
+                      <div className="flex items-start gap-4">
+                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-soft text-brand">
+                          <Icon className="text-3xl" />
+                        </div>
+
+                        <div>
+                          <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand">
+                            Servicio
+                          </p>
+                          <h2 className="mt-1 text-2xl font-bold text-slate-900 sm:text-3xl">
+                            {service.title}
+                          </h2>
+                        </div>
+                      </div>
+
+                      <p className="mt-5 text-base leading-8 text-brand-muted sm:text-lg">
+                        {service.fullDescription}
+                      </p>
+
+                      <div className="mt-7">
+                        <h3 className="font-bold text-slate-900">
+                          Características principales
+                        </h3>
+
+                        <div className="mt-4 grid gap-3">
+                          {service.details.map((detail) => (
+                            <div key={detail} className="flex gap-3">
+                              <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-brand" />
+                              <p className="leading-7 text-brand-muted">
+                                {detail}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mt-7 rounded-[1.5rem] bg-brand-soft p-5">
+                        <h3 className="font-bold text-slate-900">Beneficios</h3>
+                        <p className="mt-2 leading-7 text-brand-muted">
+                          {service.benefitSummary}
+                        </p>
+                      </div>
+
+                      <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                        <a
+                          href={siteConfig.contact.whatsappMessage}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center rounded-full brand-button px-7 py-3 font-bold shadow-md transition hover:-translate-y-0.5"
+                        >
+                          Consultar este servicio
+                        </a>
+
+                        <Link
+                          href="/contacto"
+                          className="inline-flex items-center justify-center gap-2 rounded-full border border-brand-soft bg-white px-7 py-3 font-bold text-brand transition hover:-translate-y-0.5 hover:bg-brand-soft"
+                        >
+                          Ver contacto
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA final */}
+      <section className="bg-brand-soft px-4 py-16 sm:px-6 md:px-10">
+        <div className="mx-auto max-w-5xl rounded-[1.75rem] brand-gradient p-6 text-center text-white shadow-xl sm:p-8 md:p-10">
+          <h2 className="text-3xl font-bold">
+            ¿Necesitas orientación antes de elegir un tratamiento?
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl leading-7 text-sky-50">
+            Escríbenos y te ayudamos a coordinar una valoración profesional en
+            Centro Dental Suárez.
+          </p>
+
+          <a
+            href={siteConfig.contact.whatsappMessage}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-7 inline-flex items-center justify-center rounded-full bg-white px-7 py-3 font-bold text-brand shadow-md transition hover:-translate-y-0.5 hover:bg-brand-soft"
           >
-            <div className="w-full lg:w-1/2 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
-              <Image
-                src={servicio.imagen}
-                alt={servicio.nombre}
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover rounded-xl hover:scale-105 transition-transform duration-500"
-                priority={index < 2}
-              />
-            </div>
-            <div className="w-full lg:w-1/2 text-center lg:text-left space-y-6">
-              <div className="flex items-center justify-center lg:justify-start gap-4">
-                {servicio.icono}
-                <h2 className="text-3xl md:text-4xl font-bold text-[#2563eb]">
-                  {servicio.nombre}
-                </h2>
-              </div>
-              <p className="text-lg text-[#334155] leading-relaxed">
-                {servicio.descripcion}
-              </p>
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-[#1e40af]">Características principales:</h3>
-                <ul className="space-y-3">
-                  {servicio.detalles.map((detalle, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <FaCheckCircle className="text-[#2563eb] mt-1 flex-shrink-0" />
-                      <span className="text-[#334155]">{detalle}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-[#f0f9ff] p-6 rounded-xl">
-                <h3 className="text-xl font-semibold text-[#1e40af] mb-3">Beneficios:</h3>
-                <p className="text-[#334155]">{servicio.beneficios}</p>
-              </div>
-            </div>
-          </motion.section>
-        ))}
-      </div>
-
-      <footer className="text-center text-sm text-gray-500 mt-20 mb-10">
-        &copy; 2025 Centro Dental Suárez. Todos los derechos reservados.
-      </footer>
+            Agendar valoración
+          </a>
+        </div>
+      </section>
     </main>
   );
-}
-
-export default function Servicios() {
-  return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#2563eb]"></div>
-    </div>}>
-      <ServiciosContent />
-    </Suspense>
-  );
-}
+} 

@@ -1,70 +1,326 @@
-"use client";
-import { motion } from "framer-motion";
-import { FaInstagram, FaFacebookF, FaWhatsapp, FaTiktok } from "react-icons/fa";
+// src/app/contacto/page.tsx
 
-export default function Contacto() {
+import type { Metadata } from "next";
+import {
+  CalendarCheck,
+  Clock,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+} from "lucide-react";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+  FaWhatsapp,
+} from "react-icons/fa";
+import { siteConfig } from "../data/site";
+import SectionHeader from "../components/ui/SectionHeader";
+
+export const metadata: Metadata = {
+  title: "Contacto | Centro Dental Suárez",
+  description:
+    "Contáctate con Centro Dental Suárez en Santa Cruz de la Sierra. Agenda tu cita por WhatsApp, teléfono o visita nuestra ubicación.",
+};
+
+export default function ContactoPage() {
   return (
-    <main className="min-h-screen pt-10 pb-16 px-6 bg-gradient-to-b from-[#d1fae5] via-[#93c5fd] to-[#60a5fa] text-gray-800">
-      <motion.h1
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl font-extrabold text-center text-[#1e3a8a] mb-12"
-      >
-        Contáctanos
-      </motion.h1>
+    <main className="overflow-hidden bg-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden brand-gradient px-4 py-16 text-white sm:px-6 md:px-10 md:py-24">
+        <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+        <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7 }}
-        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12"
-      >
-        {/* Mapa de Google */}
-        <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-lg border-2 border-[#4a90e2]">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3798.893655261768!2d-63.181!3d-17.7966944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDQ3JzQ4LjEiUyA2M8KwMTAnNTEuNiJX!5e0!3m2!1ses-419!2sbo!4v1744574033876!5m2!1ses-419!2sbo"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
+        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+          <div>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-cyan-100 sm:text-sm">
+              Contacto
+            </p>
+
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+              Agenda tu atención en Centro Dental Suárez.
+            </h1>
+
+            <p className="mt-5 max-w-2xl text-base leading-8 text-sky-50 sm:text-lg">
+              Escríbenos por WhatsApp, llámanos o visítanos en nuestra clínica
+              para recibir orientación y coordinar tu cita.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={siteConfig.contact.whatsappMessage}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 rounded-full bg-white px-7 py-3 font-bold text-brand shadow-md transition hover:-translate-y-0.5 hover:bg-brand-soft"
+              >
+                <FaWhatsapp className="text-xl text-green-500" />
+                Escribir por WhatsApp
+              </a>
+
+              <a
+                href={siteConfig.contact.phoneHref}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3 font-bold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20"
+              >
+                <Phone className="h-4 w-4" />
+                Llamar ahora
+              </a>
+            </div>
+          </div>
+
+          <div className="rounded-[1.75rem] border border-white/20 bg-white/10 p-5 shadow-2xl backdrop-blur-md sm:p-7">
+            <div className="rounded-[1.5rem] bg-white p-5 text-slate-900 shadow-xl sm:p-6">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-soft text-brand">
+                <CalendarCheck className="h-6 w-6" />
+              </div>
+
+              <h2 className="mt-5 text-2xl font-bold">
+                Atención con cita previa
+              </h2>
+
+              <p className="mt-3 leading-7 text-brand-muted">
+                Te recomendamos escribirnos para consultar disponibilidad antes
+                de visitar la clínica.
+              </p>
+
+              <div className="mt-5 space-y-3">
+                {siteConfig.schedule.map((item) => (
+                  <div
+                    key={item.day}
+                    className="flex flex-col gap-1 rounded-2xl bg-brand-soft p-4 sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <span className="font-bold text-slate-900">{item.day}</span>
+                    <span
+                      className={
+                        item.time === "Cerrado"
+                          ? "font-bold text-red-500"
+                          : "font-semibold text-brand-muted"
+                      }
+                    >
+                      {item.time}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        {/* Información de contacto */}
-        <div className="flex flex-col justify-center space-y-6 text-lg text-[#475569]">
-          <p>📍 <strong>Dirección:</strong> Av. Velarde #325, Santa Cruz de la Sierra, Bolivia</p>
-          <p>📞 <strong>Teléfono:</strong> <a href="tel:+59169084318" className="text-[#2563eb] underline hover:text-[#1d4ed8]">+591 69084318</a></p>
-          <p>💬 <strong>WhatsApp:</strong> <a href="https://wa.me/59169084318" target="_blank" rel="noopener noreferrer" className="text-[#2563eb] underline hover:text-[#1d4ed8]">Enviar mensaje</a></p>
-          <p>✉️ <strong>Email:</strong> <a href="mailto:contacto@dental-suarez.com" className="text-[#2563eb] underline hover:text-[#1d4ed8]">contacto@dental-suarez.com</a></p>
-          <p>⏰ <strong>Horarios de Atención:</strong><br />Lunes a Viernes: 08:00 - 12:30 | 14:30 - 19:00<br />Sábados: 08:00 - 13:00<br />Domingos y Feriados: <span className="text-red-500 font-semibold">Cerrado</span></p>
+      {/* Canales de contacto */}
+      <section className="relative overflow-hidden px-4 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-brand-soft blur-3xl" />
+        <div className="absolute -right-24 bottom-20 h-80 w-80 rounded-full bg-brand-soft-2 blur-3xl" />
 
-          {/* Redes Sociales alineadas a la izquierda */}
-          <div className="mt-8">
-            <p className="text-lg md:text-xl text-gray-700 mb-4">Síguenos o escríbenos por nuestras redes:</p>
-            <div className="flex space-x-8 text-3xl text-[#0c3fa3]">
-              <a href="https://www.instagram.com/centrodentalsuarez/" target="_blank" rel="noopener noreferrer">
-                <FaInstagram className="hover:text-pink-500 transition duration-200" />
-              </a>
-              <a href="https://www.facebook.com/centrodentalsuarezodte/" target="_blank" rel="noopener noreferrer">
-                <FaFacebookF className="hover:text-blue-500 transition duration-200" />
-              </a>
-              <a href="https://www.tiktok.com/@centrodentalsuarez?_t=ZM-8vdzmwdIYxK&_r=1" target="_blank" rel="noopener noreferrer">
-                <FaTiktok className="hover:text-black transition duration-200" />
-              </a>
-              <a href="https://wa.me/59169084318" target="_blank" rel="noopener noreferrer">
-                <FaWhatsapp className="hover:text-green-500 transition duration-200" />
+        <div className="relative mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Canales oficiales"
+            title="Comunícate con nosotros"
+            description="Elige el canal que prefieras para consultar disponibilidad, tratamientos o ubicación."
+          />
+
+          <div className="grid gap-5 md:grid-cols-3">
+            <a
+              href={siteConfig.contact.whatsappMessage}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group rounded-[1.75rem] border border-brand-soft bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-50 text-green-600">
+                <FaWhatsapp className="text-3xl" />
+              </div>
+
+              <h2 className="mt-5 text-2xl font-bold text-slate-900">
+                WhatsApp
+              </h2>
+
+              <p className="mt-3 leading-7 text-brand-muted">
+                Agenda tu cita o consulta disponibilidad directamente por
+                WhatsApp.
+              </p>
+
+              <p className="mt-5 font-bold text-green-600">
+                Enviar mensaje →
+              </p>
+            </a>
+
+            <a
+              href={siteConfig.contact.phoneHref}
+              className="group rounded-[1.75rem] border border-brand-soft bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-soft text-brand">
+                <Phone className="h-7 w-7" />
+              </div>
+
+              <h2 className="mt-5 text-2xl font-bold text-slate-900">
+                Teléfono
+              </h2>
+
+              <p className="mt-3 leading-7 text-brand-muted">
+                Llámanos para recibir información sobre horarios y atención.
+              </p>
+
+              <p className="mt-5 font-bold text-brand">
+                {siteConfig.contact.phone}
+              </p>
+            </a>
+
+            <a
+              href={siteConfig.contact.emailHref}
+              className="group rounded-[1.75rem] border border-brand-soft bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-soft text-brand">
+                <Mail className="h-7 w-7" />
+              </div>
+
+              <h2 className="mt-5 text-2xl font-bold text-slate-900">
+                Correo
+              </h2>
+
+              <p className="mt-3 leading-7 text-brand-muted">
+                Escríbenos por correo para consultas o información adicional.
+              </p>
+
+              <p className="mt-5 break-all font-bold text-brand">
+                {siteConfig.contact.email}
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Mapa + datos */}
+      <section className="bg-brand-soft px-4 py-16 sm:px-6 md:px-10 md:py-24">
+        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
+          <div className="overflow-hidden rounded-[1.75rem] border border-brand-soft bg-white shadow-xl">
+            <div className="h-[340px] sm:h-[430px] lg:h-full">
+              <iframe
+                title="Mapa de Centro Dental Suárez"
+                src={siteConfig.mapEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+
+          <div className="rounded-[1.75rem] bg-white p-5 shadow-xl sm:p-7">
+            <div className="brand-gradient rounded-[1.5rem] p-5 text-white">
+              <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-100">
+                Ubicación
+              </p>
+
+              <h2 className="mt-3 text-2xl font-bold">
+                Visítanos en Santa Cruz de la Sierra
+              </h2>
+
+              <p className="mt-3 leading-7 text-sky-50">
+                Estamos ubicados en una zona accesible para que puedas coordinar
+                tu atención de forma sencilla.
+              </p>
+            </div>
+
+            <div className="mt-6 space-y-4">
+              <div className="flex gap-4 rounded-2xl bg-brand-soft p-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-brand shadow-sm">
+                  <MapPin className="h-5 w-5" />
+                </div>
+
+                <div>
+                  <p className="font-bold text-slate-900">Dirección</p>
+                  <p className="mt-1 leading-6 text-brand-muted">
+                    {siteConfig.contact.address}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 rounded-2xl bg-brand-soft p-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-brand shadow-sm">
+                  <Clock className="h-5 w-5" />
+                </div>
+
+                <div>
+                  <p className="font-bold text-slate-900">Horario principal</p>
+                  <p className="mt-1 leading-6 text-brand-muted">
+                    Lunes a Viernes: 08:00 - 12:30 | 14:30 - 19:00
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href="https://www.google.com/maps/dir//Av.+Velarde+#325,+Santa+Cruz+de+la+Sierra"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full brand-button px-7 py-3 font-bold shadow-md transition hover:-translate-y-0.5"
+              >
+                Abrir ruta en Google Maps
+                <MapPin className="h-4 w-4" />
               </a>
             </div>
           </div>
         </div>
-      </motion.div>
+      </section>
 
-      <footer className="text-center text-sm text-gray-500 mt-30">
-        &copy; 2025 Centro Dental Suarez. All rights reserved
-      </footer>
+      {/* Redes */}
+      <section className="bg-white px-4 py-16 sm:px-6 md:px-10">
+        <div className="mx-auto max-w-5xl rounded-[1.75rem] border border-brand-soft bg-white p-6 text-center shadow-xl sm:p-8 md:p-10">
+          <MessageCircle className="mx-auto h-10 w-10 text-brand" />
+
+          <h2 className="mt-4 text-3xl font-bold text-slate-900">
+            También puedes seguirnos en redes
+          </h2>
+
+          <p className="mx-auto mt-3 max-w-2xl leading-7 text-brand-muted">
+            Encuentra novedades, contenido informativo y actualizaciones del
+            centro en nuestros canales oficiales.
+          </p>
+
+          <div className="mt-7 grid grid-cols-4 gap-3 text-2xl sm:mx-auto sm:max-w-md">
+            <a
+              href={siteConfig.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-14 items-center justify-center rounded-2xl bg-brand-soft text-brand transition hover:bg-brand-soft-2"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href={siteConfig.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-14 items-center justify-center rounded-2xl bg-brand-soft text-brand transition hover:bg-brand-soft-2"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
+
+            <a
+              href={siteConfig.social.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-14 items-center justify-center rounded-2xl bg-brand-soft text-brand transition hover:bg-brand-soft-2"
+              aria-label="TikTok"
+            >
+              <FaTiktok />
+            </a>
+
+            <a
+              href={siteConfig.social.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-14 items-center justify-center rounded-2xl bg-brand-soft text-brand transition hover:bg-brand-soft-2"
+              aria-label="WhatsApp"
+            >
+              <FaWhatsapp />
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
